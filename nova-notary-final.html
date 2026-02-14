@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA Notary Services - Same Day Notary in Northern Virginia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0A2463;
+            --royal-blue: #1E5EAA;
+            --bright-blue: #3E92CC;
+            --ice-blue: #E8F4F8;
+            --white: #FFFFFF;
+            --text-dark: #1a1a1a;
+            --text-gray: #525252;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(165deg, var(--navy) 0%, var(--royal-blue) 100%);
+            color: var(--white);
+            padding: 120px 20px 100px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(62, 146, 204, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(62, 146, 204, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.2em;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-location {
+            font-size: 1.1em;
+            margin-bottom: 45px;
+            opacity: 0.85;
+            animation: fadeInUp 0.8s ease-out 0.5s both;
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--navy);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .icon {
+            font-size: 1.2em;
+        }
+
+        /* Value Proposition Section */
+        .value-prop {
+            background: var(--white);
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            text-align: center;
+            color: var(--navy);
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--ice-blue);
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(10, 36, 99, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--royal-blue), var(--bright-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2em;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5em;
+            color: var(--navy);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(to bottom, var(--ice-blue), var(--white));
+            padding: 80px 20px;
+        }
+
+        .pricing-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(10, 36, 99, 0.15);
+            text-align: center;
+            border: 3px solid var(--bright-blue);
+        }
+
+        .price-tag {
+            font-family: 'Playfair Display', serif;
+            font-size: 5em;
+            font-weight: 900;
+            color: var(--navy);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .price-tag sup {
+            font-size: 0.4em;
+            vertical-align: super;
+        }
+
+        .price-description {
+            font-size: 1.25em;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 30px 0;
+            padding: 30px;
+            background: var(--ice-blue);
+            border-radius: 12px;
+        }
+
+        .pricing-features li {
+            list-style: none;
+            padding: 12px 0;
+            font-size: 1.1em;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--bright-blue);
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--navy);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.25em;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .contact-method {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            min-width: 280px;
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--bright-blue);
+            transform: scale(1.05);
+        }
+
+        .contact-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .contact-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-value {
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .contact-value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--bright-blue);
+        }
+
+        /* Footer */
+        footer {
+            background: #050f1f;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8em;
+            }
+
+            .hero-subtitle {
+                font-size: 1.15em;
+            }
+
+            .section-title {
+                font-size: 2.2em;
+            }
+
+            .price-tag {
+                font-size: 4em;
+            }
+
+            .btn {
+                padding: 16px 32px;
+                font-size: 1em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">📍 Serving Northern Virginia</div>
+            <h1>NOVA Notary Services</h1>
+            <p class="hero-subtitle">Professional Same-Day Notary Services at Your Doorstep</p>
+            <p class="hero-location">Fast, reliable, and convenient notarization for your important documents</p>
+
+            <div class="cta-container">
+                <a href="tel:5712492370" class="btn btn-primary">
+                    <span class="icon">📞</span>
+                    Call (571) 249-2370
+                </a>
+                <a href="mailto:notary847@gmail.com" class="btn btn-secondary">
+                    <span class="icon">✉️</span>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section class="value-prop">
+        <div class="container">
+            <h2 class="section-title">Why Choose NOVA Notary?</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Same-Day Service</h3>
+                    <p>Need it done today? We come to you with fast, same-day notary services across Northern Virginia.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>We Come to You</h3>
+                    <p>No need to leave home or office. We bring notary services directly to your location at your convenience.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Unlimited Documents</h3>
+                    <p>One flat rate covers as many documents as you need notarized within the hour. Simple and transparent pricing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            
+            <div class="pricing-card">
+                <div class="price-tag"><sup>$</sup>99</div>
+                <p class="price-description">Per Hour of Service</p>
+                
+                <ul class="pricing-features">
+                    <li>Same-day mobile notary service</li>
+                    <li>Unlimited notarizations per hour</li>
+                    <li>We travel to your location</li>
+                    <li>Professional & experienced notary</li>
+                    <li>Serving all of Northern Virginia</li>
+                </ul>
+                
+                <div class="cta-container">
+                    <a href="tel:5712492370" class="btn btn-primary">
+                        <span class="icon">📞</span>
+                        Book Now: (571) 249-2370
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2>Have Questions? Let's Talk!</h2>
+            <p class="contact-subtitle">We're here to help with all your notary needs. Reach out anytime for more information.</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-label">Call Us</div>
+                    <div class="contact-value">
+                        <a href="tel:5712492370">(571) 249-2370</a>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-label">Email Us</div>
+                    <div class="contact-value">
+                        <a href="mailto:notary847@gmail.com">notary847@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.1em; margin-top: 40px; opacity: 0.9;">
+                Whether you need documents notarized for real estate, legal matters, financial transactions, or personal documents, we're ready to help you today.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NOVA Notary Services. Professional notary services for Northern Virginia.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add copy-to-clipboard functionality for email buttons on desktop
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailButtons = document.querySelectorAll('a[href^="mailto:"]');
+            
+            emailButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Check if user is on desktop (screen width > 768px)
+                    if (window.innerWidth > 768) {
+                        e.preventDefault();
+                        
+                        // Extract email from href
+                        const email = this.getAttribute('href').replace('mailto:', '');
+                        
+                        // Copy to clipboard
+                        navigator.clipboard.writeText(email).then(function() {
+                            // Show success message
+                            const originalText = button.innerHTML;
+                            button.innerHTML = '<span class="icon">✓</span> Email Copied!';
+                            button.style.backgroundColor = 'rgba(62, 146, 204, 0.3)';
+                            
+                            // Reset after 2 seconds
+                            setTimeout(function() {
+                                button.innerHTML = originalText;
+                                button.style.backgroundColor = '';
+                            }, 2000);
+                        }).catch(function(err) {
+                            // If clipboard fails, open mailto as fallback
+                            window.location.href = 'mailto:' + email;
+                        });
+                    }
+                    // On mobile (width <= 768px), let the mailto link work normally
+                });
+            });
+        });
+    </script>
+</body>
+</html>
